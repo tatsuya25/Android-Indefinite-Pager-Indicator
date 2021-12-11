@@ -16,7 +16,7 @@ import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import kotlin.math.abs
 
-class IndefinitePagerIndicator @JvmOverloads constructor(
+open class IndefinitePagerIndicator @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0
@@ -50,7 +50,7 @@ class IndefinitePagerIndicator @JvmOverloads constructor(
     private var dotSeparationDistancePx = dpToPx(
         dp = DEFAULT_DOT_SEPARATION_DISTANCE_DP.toFloat()
     )
-    private var supportRtl = false
+    open var supportRtl = false
     private var verticalSupport = false
 
     @ColorInt
@@ -393,7 +393,7 @@ class IndefinitePagerIndicator @JvmOverloads constructor(
         else -> 0
     }
 
-    private fun isRtl() = ViewCompat.getLayoutDirection(this) == ViewCompat.LAYOUT_DIRECTION_RTL
+    open fun isRtl() = ViewCompat.getLayoutDirection(this) == ViewCompat.LAYOUT_DIRECTION_RTL
 
     private fun getRTLPosition(position: Int) = getItemCount() - position - 1
 
